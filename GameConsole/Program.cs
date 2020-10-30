@@ -7,10 +7,12 @@ namespace GameConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            var p = new PlayerDisplay();
-            var a = new PlayerCharacter();
-            p.Write(a);
+            var player = new PlayerCharacter();
+            player.Name = "Anis";
+            player.DaysSinceLastLogin = 23;
+
+            PlayerDisplay.Write(player);
+
         }
     }
 }
