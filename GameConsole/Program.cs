@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading.Tasks.Dataflow;
 
 namespace GameConsole
@@ -8,11 +9,19 @@ namespace GameConsole
         static void Main(string[] args)
         {
             var player = new PlayerCharacter();
-            player.Name = "Anis";
-            player.DaysSinceLastLogin = 23;
+            while (true)
+            {
+                Console.WriteLine("Enter Player Name: ");
+                player.Name = Console.ReadLine();
+                Console.WriteLine("Enter Player DayScienceLastLogin: ");
+                player.DaysSinceLastLogin = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Player DOB: ");
+                player.DateOfBrith = Convert.ToDateTime(Console.ReadLine());
+                Console.WriteLine("Enter Player Experience: ");
+                player.IsNoob = Convert.ToBoolean(Console.ReadLine());
 
-            PlayerDisplay.Write(player);
-
+                player.Print();
+            }
         }
     }
 }

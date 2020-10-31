@@ -1,32 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace GameConsole
 {
-    class PlayerDisplay
+    static class PlayerDisplay
     {
-        public static void Write(PlayerCharacter player)
+        public static void Print(this PlayerCharacter player)
         {
-            Console.WriteLine(player.Name);
-
-            if (player.DaysSinceLastLogin == 1)
-            {
-                Console.WriteLine("No value for DaysSinceLastLogin");
-            }
-            else
-            {
-                Console.WriteLine(player.DaysSinceLastLogin);
-            }
-
-            if (player.DateOfBrith == DateTime.MinValue)
-            {
-                Console.WriteLine("No value for DateOfBirth");
-            }
-            else
-            {
-                Console.WriteLine(player.DateOfBrith);
-            }
+            int dsll = player.DaysSinceLastLogin.HasValue ? player.DaysSinceLastLogin.Value : -1;
+            if (string.IsNullOrEmpty(player.Name)) Console.WriteLine("Name Not Specified"); else Console.WriteLine(player.Name);
+            Console.WriteLine(dsll);
+            if (player.DateOfBrith == null) Console.WriteLine("DateOfBirth Not Specified"); else Console.WriteLine(player.DateOfBrith);
+            if (player.IsNoob == null) Console.WriteLine("Unknown"); else if (player.IsNoob == true) Console.WriteLine("Player is newbe"); else Console.WriteLine("Experienced Player");
         }
     }
 }
